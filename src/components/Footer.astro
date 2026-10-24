@@ -1,0 +1,23 @@
+---
+import { GITHUB_URL } from "../data/site";
+const home = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer container">
+  <a class="brand footer-brand" href={home}>
+    g<span class="text-accent">.</span>
+    <span class="mono">
+      GPU GUY
+      <br />
+      GPU PERFORMANCE ENGINEERING
+    </span>
+  </a>
+  <span class="mono">LESS OVERHEAD. MORE POSSIBILITY.</span>
+  <div>
+    <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+      GitHub ↗
+    </a>
+    <a href={`${home}#top`}>Back to top ↑</a>
+  </div>
+  <small>© {new Date().getFullYear()} GPU Guy</small>
+</footer>

@@ -1,0 +1,90 @@
+---
+const grid = Array.from({ length: 64 }, (_, i) => i);
+---
+
+<div
+  class="gpu-visual"
+  role="img"
+  aria-label="Schematic of a GPU with illuminated compute blocks and circuit traces. Decorative illustration, not benchmark data."
+>
+  <div class="gpu-grid"></div>
+  <div class="visual-coordinate mono">FIG. 01 / INSIDE THE EXECUTION PATH</div>
+  <svg
+    class="circuit-board"
+    viewBox="0 0 600 600"
+    fill="none"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="trace" x1="0" x2="1" y1="0" y2="1">
+        <stop stop-color="#57e8d2" stop-opacity=".65" />
+        <stop offset="1" stop-color="#9975ff" stop-opacity=".25" />
+      </linearGradient>
+    </defs>
+    <g stroke="url(#trace)" stroke-width="1">
+      {Array.from({ length: 9 }, (_, i) => (
+        <>
+          <path
+            d={`M${212 + i * 22} 204V${152 - i * 8}L${120 + i * 24} ${62 - i * 4}V0`}
+          />
+          <path
+            d={`M${212 + i * 22} 396V${448 + i * 8}L${120 + i * 24} ${538 + i * 4}V600`}
+          />
+          <path
+            d={`M204 ${212 + i * 22}H${152 - i * 8}L${62 - i * 4} ${120 + i * 24}H0`}
+          />
+          <path
+            d={`M396 ${212 + i * 22}H${448 + i * 8}L${538 + i * 4} ${120 + i * 24}H600`}
+          />
+        </>
+      ))}
+      <rect
+        x="158"
+        y="158"
+        width="284"
+        height="284"
+        rx="13"
+        stroke-dasharray="3 8"
+      />
+      <circle cx="120" cy="120" r="4" />
+      <circle cx="480" cy="480" r="4" />
+      <circle cx="480" cy="120" r="4" />
+      <circle cx="120" cy="480" r="4" />
+    </g>
+  </svg>
+  <div class="chip-orbit orbit-one"></div>
+  <div class="chip-orbit orbit-two"></div>
+  <div class="chip">
+    <div class="chip-edge"></div>
+    <div class="chip-face">
+      <div class="chip-label mono">
+        <span>GPU COMPUTE</span>
+        <span>↗</span>
+      </div>
+      <div class="compute-grid">
+        {grid.map((i) => (
+          <i
+            style={`--delay:${(i % 9) * -0.4}s;--level:${i % 7}`}
+            class:list={{ lit: i % 5 !== 0, violet: i % 7 === 0 }}
+          />
+        ))}
+      </div>
+      <div class="chip-bottom mono">
+        <span>LESS WAIT.</span>
+        <b>MORE WORK.</b>
+      </div>
+    </div>
+  </div>
+  <div class="gpu-callout callout-a">
+    <span class="status-dot"></span>
+    <span>COMPUTE, NOT IDLE.</span>
+  </div>
+  <div class="gpu-callout callout-b">
+    <span class="micro-cross">+</span>
+    <span>FOLLOW THE BOTTLENECK</span>
+  </div>
+  <div class="gpu-caption mono">
+    <span>MODEL → RUNTIME → KERNEL → SILICON</span>
+    <span>01—04</span>
+  </div>
+</div>

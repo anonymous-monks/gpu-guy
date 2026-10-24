@@ -1,0 +1,112 @@
+---
+const chapters = [
+  {
+    label: "THE DEMO",
+    title: "Your model works.",
+    line: "Production is where the pain starts.",
+    text: "A clean demo. A happy path. Then real requests arrive — and your serving stack meets the workload it wasn’t benchmarked for.",
+  },
+  {
+    label: "THE SYMPTOMS",
+    title: "The queue gets longer.",
+    line: "So does the latency tail.",
+    text: "TTFT climbs. P95 gets ugly. The GPU utilization graph looks suspiciously relaxed for something this expensive.",
+  },
+  {
+    label: "THE SUGGESTION",
+    title: "“Just add more GPUs.”",
+    line: "Somebody always says it.",
+    text: "More capacity can help. But scaling a bottleneck is a remarkably effective way to make it more expensive.",
+  },
+  {
+    label: "THE REALIZATION",
+    title: "That’s expensive debugging.",
+    line: "Hardware is not a diagnosis.",
+    text: "A synchronization stall doesn’t need a bigger purchase order. It needs someone to follow the execution path.",
+  },
+  {
+    label: "THE APPROACH",
+    title: "Profile first.",
+    line: "Optimize second. Scale third.",
+    text: "Find the limit. Change the right thing. Measure again. Give the next GPU a reason to exist.",
+  },
+];
+---
+
+<section
+  class="story-section"
+  id="story"
+  aria-label="From a working model to efficient production inference"
+>
+  <div class="container story-layout">
+    <div class="story-chapters">
+      {chapters.map((c, i) => (
+        <article class="story-chapter" data-chapter={i}>
+          <p class="eyebrow">
+            0{i + 1} / {c.label}
+          </p>
+          <h2>
+            {c.title}
+            <span>{c.line}</span>
+          </h2>
+          <p>{c.text}</p>
+        </article>
+      ))}
+    </div>
+    <div class="story-sticky">
+      <div class="story-console" data-stage="0">
+        <div class="console-top mono">
+          <span>
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+          <span>INFERENCE / EXECUTION TRACE</span>
+          <span>↗</span>
+        </div>
+        <div class="console-heading">
+          <span class="mono">FOLLOW THE WORK.</span>
+          <strong class="story-readout">
+            Model loaded.
+            <br />
+            Now meet production.
+          </strong>
+        </div>
+        <div class="trace-labels mono">
+          <span>CPU / DISPATCH</span>
+          <span>GPU / COMPUTE</span>
+          <span>GPU / MEMORY</span>
+          <span>REQUEST / QUEUE</span>
+        </div>
+        <div class="trace-grid" aria-hidden="true">
+          {Array.from({ length: 4 }, (_, row) => (
+            <div class={`trace-row row-${row}`}>
+              {Array.from({ length: 8 }, (_, col) => (
+                <i
+                  style={`--i:${col};--w:${[28, 58, 35, 70, 42, 31, 51, 25][col]}px`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+        <div class="trace-axis mono">
+          <span>t₀</span>
+          <span>EXECUTION WINDOW →</span>
+          <span>t₁</span>
+        </div>
+        <div class="console-bottom">
+          <span class="status-dot"></span>
+          <span class="story-status mono">WORKLOAD: CHANGING</span>
+          <span class="mono">ILLUSTRATIVE TRACE</span>
+        </div>
+      </div>
+      <div class="chapter-progress" aria-hidden="true">
+        {chapters.map((_, i) => (
+          <span class:list={{ active: i === 0 }} data-progress={i}>
+            0{i + 1}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

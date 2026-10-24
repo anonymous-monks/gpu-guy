@@ -1,0 +1,62 @@
+---
+import Icon from "./Icon.astro";
+import {
+  EMAIL,
+  GITHUB_URL,
+  inquiryHref,
+  auditHref,
+} from "../data/site";
+---
+
+<section class="contact-section section" id="contact">
+  <div class="container">
+    <p class="eyebrow reveal">08 / LET’S FIND THE BOTTLENECK</p>
+    <div class="contact-layout">
+      <div class="reveal">
+        <h2>
+          Tell me
+          <br />
+          what’s <span>slow.</span>
+        </h2>
+        <p>
+          A stubborn kernel. A growing inference bill.
+          <br />A serving stack that should be faster.
+          <br />
+          That’s a good starting point.
+        </p>
+        <div class="button-row">
+          <a class="button" href={inquiryHref}>
+            Request a Quote <Icon name="external" size={18} />
+          </a>
+          <a class="text-link" href={auditHref}>
+            Discuss an audit <Icon size={18} />
+          </a>
+        </div>
+      </div>
+      <div class="contact-details reveal">
+        <span class="mono">SEND THE CONTEXT. SKIP THE PITCH DECK.</span>
+        <ol class="context-list">
+          <li>
+            <span>01</span> Model & GPU hardware
+          </li>
+          <li>
+            <span>02</span> Serving stack & workload
+          </li>
+          <li>
+            <span>03</span> Current performance & target
+          </li>
+        </ol>
+        <div class="contact-links">
+          <a href={inquiryHref}>
+            <Icon name="mail" size={18} />
+            {EMAIL}{" "}
+            <Icon name="external" size={16} />
+          </a>
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+            GitHub <Icon name="external" size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

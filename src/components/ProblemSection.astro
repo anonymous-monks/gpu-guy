@@ -1,0 +1,76 @@
+---
+import Icon from "./Icon.astro";
+const problems = [
+  {
+    icon: "pulse",
+    title: "Latency",
+    kicker: "EVERY MILLISECOND HAS A CAUSE.",
+    text: "High TTFT. Uneven inter-token latency. P95/P99 spikes. Launch overhead, synchronization stalls, and attention kernels that make requests wait.",
+  },
+  {
+    icon: "layers",
+    title: "Throughput",
+    kicker: "BUSY ISN’T THE SAME AS USEFUL.",
+    text: "Bad batching, scheduler inefficiencies, bandwidth limits, and poor tensor parallel configuration. Prefill and decode fighting for the same resources.",
+  },
+  {
+    icon: "memory",
+    title: "Memory",
+    kicker: "YOUR VRAM IS NOT A JUNK DRAWER.",
+    text: "KV-cache pressure, fragmentation, unnecessary copies, activation memory, and quantization tradeoffs. Wasted VRAM today. An OOM tomorrow.",
+  },
+  {
+    icon: "server",
+    title: "Serving",
+    kicker: "THE RUNTIME IS PART OF THE MODEL.",
+    text: "vLLM and SGLang configuration, cold starts, model loading, concurrency, and request scheduling. Multi-GPU communication and NCCL bottlenecks included.",
+  },
+  {
+    icon: "chip",
+    title: "Kernels",
+    kicker: "THE METAL KEEPS RECEIPTS.",
+    text: "Poor occupancy. Memory-bound and launch-bound operations. Unnecessary synchronization, missed fusion, and generic kernels doing a specialist’s job.",
+  },
+  {
+    icon: "terminal",
+    title: "Infrastructure cost",
+    kicker: "IDLE SILICON STILL SENDS AN INVOICE.",
+    text: "Poor utilization becomes more GPUs, larger instances, and fewer requests per second per GPU. Your inference bill is a performance profile in disguise.",
+  },
+];
+---
+
+<section class="section container" id="problems">
+  <div class="section-heading reveal">
+    <p class="eyebrow">01 / THE BOTTLENECK IS SOMEWHERE</p>
+    <div class="heading-row">
+      <h2>
+        Your inference stack
+        <br />
+        is probably leaking
+        <br />
+        <span class="muted">performance.</span>
+      </h2>
+      <p>
+        You might not realize it, but you’re burning money inside your hosted
+        LLM.
+        <br />
+        <br />
+        <strong>Let’s find out where.</strong>
+      </p>
+    </div>
+  </div>
+  <div class="problem-grid">
+    {problems.map((p, i) => (
+      <article class="problem-card reveal">
+        <div class="card-top">
+          <Icon name={p.icon} size={26} />
+          <span class="mono">0{i + 1}</span>
+        </div>
+        <h3>{p.title}</h3>
+        <p>{p.text}</p>
+        <span class="card-kicker mono">{p.kicker}</span>
+      </article>
+    ))}
+  </div>
+</section>

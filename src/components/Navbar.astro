@@ -1,0 +1,30 @@
+---
+import Icon from "./Icon.astro";
+const links = ["Services", "Problems", "Work", "Process", "About", "Contact"];
+const home = import.meta.env.BASE_URL;
+---
+
+<header class="site-header" id="top">
+  <div class="nav-shell container">
+    <a class="brand" href={home}>
+      <span class="brand-mark" aria-hidden="true">
+        g<span>.</span>
+      </span>
+      <span>
+        GPU <strong>Guy</strong>
+        <small>GPU / SYSTEMS ENGINEER</small>
+      </span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+      Menu <span aria-hidden="true">+</span>
+    </button>
+    <nav id="main-nav" aria-label="Main navigation">
+      {links.map((link) => (
+        <a href={`${home}#${link.toLowerCase()}`}>{link}</a>
+      ))}
+      <a class="button button-small" href={`${home}#audit`}>
+        Request Audit <Icon name="external" size={15} />
+      </a>
+    </nav>
+  </div>
+</header>

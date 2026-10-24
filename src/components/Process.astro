@@ -1,0 +1,51 @@
+---
+const steps = [
+  [
+    "Benchmark",
+    "Establish the baseline.",
+    "Model, hardware, workload, concurrency, latency, throughput, and GPU utilization. Same conditions. Useful comparisons.",
+  ],
+  [
+    "Profile",
+    "Find the time. Follow the memory.",
+    "Read the timeline. Separate compute, bandwidth, communication, and waiting. Locate the constraint before touching the code.",
+  ],
+  [
+    "Optimize",
+    "Attack the highest-value bottleneck.",
+    "Configuration, scheduling, memory, or a specialized kernel. Pick the intervention the measurements actually support.",
+  ],
+  [
+    "Validate",
+    "Make the result survive reality.",
+    "Check correctness and measure again under realistic load. Document tradeoffs, regressions, and a reproducible benchmark.",
+  ],
+];
+---
+
+<section class="section container" id="process">
+  <div class="section-heading reveal">
+    <p class="eyebrow">06 / HOW THE WORK HAPPENS</p>
+    <h2>
+      No optimization
+      <br />
+      <span class="text-accent">without measurement.</span>
+    </h2>
+  </div>
+  <div class="process-grid">
+    {steps.map(([title, line, text], i) => (
+      <article class="process-step reveal">
+        <span class="step-number mono">
+          0{i + 1}
+          <span>↗</span>
+        </span>
+        <h3>{title}</h3>
+        <strong>{line}</strong>
+        <p>{text}</p>
+      </article>
+    ))}
+  </div>
+  <p class="process-note mono reveal">
+    <span>↳</span> NO VICTORY SCREENSHOTS FROM UNREALISTIC MICROBENCHMARKS.
+  </p>
+</section>

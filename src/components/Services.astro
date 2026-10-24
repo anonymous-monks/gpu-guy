@@ -1,0 +1,85 @@
+---
+import Icon from "./Icon.astro";
+const services = [
+  {
+    icon: "pulse",
+    title: "LLM inference optimization",
+    text: "Make the entire request path earn its milliseconds. Tune TTFT, ITL, P95 latency, and throughput against your actual workload.",
+    tags: ["Batch sizing", "Scheduling", "KV cache", "GPU utilization"],
+  },
+  {
+    icon: "chip",
+    title: "CUDA / GPU kernel engineering",
+    text: "Get closer to the silicon. Profile, fuse, and specialize kernels with CUDA, Triton, and CuTe-style approaches where the workload calls for them.",
+    tags: ["Memory access", "Occupancy", "Synchronization", "Launch overhead"],
+  },
+  {
+    icon: "server",
+    title: "vLLM / serving optimization",
+    text: "A capable runtime still needs the right configuration. Tune batching, parallelism, and memory behavior for production deployment.",
+    tags: ["vLLM", "SGLang", "Parallelism", "Concurrency"],
+  },
+  {
+    icon: "layers",
+    title: "FlashInfer / low-level inference",
+    text: "Follow attention kernels, compilation behavior, and serving primitives into the GPU execution path. Debug the boundary between the pieces.",
+    tags: ["Attention", "Compilation", "Integration debugging"],
+  },
+  {
+    icon: "search",
+    title: "GPU profiling",
+    text: "Turn “it feels slow” into a trace you can act on. Separate host overhead, device work, memory movement, and time spent waiting.",
+    tags: ["Nsight Systems", "Nsight Compute", "PyTorch profiler"],
+  },
+  {
+    icon: "terminal",
+    title: "Production deployment",
+    text: "Bring up, benchmark, and tune containerized inference on NVIDIA hardware, from single-GPU workloads to multi-GPU environments.",
+    tags: ["H100 / H200", "A100 / A800", "RTX 5090", "Benchmarking"],
+  },
+];
+---
+
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">02 / WHAT I OPTIMIZE</p>
+      <div class="heading-row">
+        <h2>
+          From the serving stack.
+          <br />
+          <span class="text-accent">Down to the kernel.</span>
+        </h2>
+        <p>
+          One system. Many places to lose performance.
+          <br />I work across the boundaries.
+        </p>
+      </div>
+    </div>
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <article class="service-card reveal">
+          <div class="card-top">
+            <Icon name={s.icon} size={29} />
+            <span class="mono">[{String(i + 1).padStart(2, "0")}]</span>
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <div class="tags">
+            {s.tags.map((t) => (
+              <span>{t}</span>
+            ))}
+          </div>
+          <a href="#contact" class="service-link">
+            Discuss this workload <Icon name="external" size={18} />
+          </a>
+          <div class="service-meter" aria-hidden="true">
+            {Array.from({ length: 22 }, () => (
+              <i />
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

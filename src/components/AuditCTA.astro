@@ -1,0 +1,50 @@
+---
+import Icon from "./Icon.astro";
+const deliverables = [
+  "Bottleneck analysis & latency breakdown",
+  "GPU utilization & memory review",
+  "Serving configuration review",
+  "Prioritized optimization plan",
+  "Recommended experiments",
+  "Kernel-level optimization opportunities",
+];
+---
+
+<section class="section container" id="audit">
+  <div class="audit-panel reveal">
+    <div class="audit-copy">
+      <p class="eyebrow">
+        <span class="status-dot"></span> A GOOD PLACE TO START
+      </p>
+      <h2>
+        You rented the GPU.
+        <br />
+        <span class="text-accent">Make it earn its keep.</span>
+      </h2>
+      <h3>GPU / LLM Performance Audit</h3>
+      <p>
+        Bring your model, serving configuration, hardware, and workload
+        characteristics. I’ll investigate where the system spends its time — and
+        what deserves attention first.
+      </p>
+      <a class="button" href="#contact">
+        Request an Audit <Icon name="external" size={18} />
+      </a>
+    </div>
+    <div class="audit-deliverables">
+      <span class="mono">WHAT YOU WALK AWAY WITH</span>
+      <ul>
+        {deliverables.map((d) => (
+          <li>
+            <Icon name="check" size={18} />
+            {d}
+          </li>
+        ))}
+      </ul>
+      <p>
+        Less guesswork.
+        <br />A clear next move.
+      </p>
+    </div>
+  </div>
+</section>
