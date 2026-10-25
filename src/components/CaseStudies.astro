@@ -51,23 +51,5 @@ const base = import.meta.env.BASE_URL;
         </article>
       ))}
     </div> 
-    <figure
-    style="max-width:900px;margin:48px auto">
-    <a 
-    href={`${base}images/gpt2_rtx5060_benchmark.png`}
-    target="_blank"
-    rel="noopener"
-    >
-    <img 
-    src={`${base}images/gpt2_rtx5060_benchmark.png`}
-    alt="GPT-2 throughput chart image"
-    style="width:100%;height:auto"
-    />
-    </a>
-    <figcaption style="text-align:center;color:var(--muted)">
-    This image reprsents GPT-2 124M chart which compares FP16 eager inference with FP16+CUDA Graphs at batch sizes 1, 2, 4, and 8.
-    This plotted CUDA Graphs in the image show about 1.32x the baseline throughput.
-    </figcaption>
-    </figure>
   </div>
 </section>
